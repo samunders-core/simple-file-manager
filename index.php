@@ -26,7 +26,7 @@ $PASSWORD = 'password';  // Set the password, to access the file manager... (opt
 
 $full_width = false; // Set to true for full width container
 
-$bootstrap_theme = "darkly"; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
+$bootstrap_theme = ""; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
 
 /* Available themes...
 cerulean
