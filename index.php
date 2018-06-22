@@ -77,7 +77,7 @@ if($PASSWORD) {
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="robots" content="noindex, nofollow">
-		<title>File Manager</title>
+		<title>Uploads Manager</title>
 		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -120,7 +120,7 @@ if(strpos($_REQUEST['file'], DIRECTORY_SEPARATOR) === 0)
 
 
 if(!$_COOKIE['_sfm_xsrf'])
-	setcookie('_sfm_xsrf',bin2hex(openssl_random_pseudo_bytes(16)));
+	setcookie('_sfm_xsrf', bin2hex(openssl_random_pseudo_bytes(16)), time() + (604800 * 30), "/"); // 86400 = 1 day
 if($_POST) {
 	if($_COOKIE['_sfm_xsrf'] !== $_POST['xsrf'] || !$_POST['xsrf'])
 		err(403,"XSRF Failure");
@@ -252,7 +252,7 @@ if($_GET['logout']==1){
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>File Manager</title>
+<title>Uploads Manager</title>
 <link href="<?php echo $bscss ?>" rel="stylesheet">
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.11/css/lightgallery.min.css"  rel="stylesheet">
@@ -574,7 +574,7 @@ $(function(){
 <div class="row align-items-center">
 
 <div class="col-md-12 col-lg-3 mb-4 text-center text-lg-left order-1 order-lg-1">
-<h3 class="mb-0"><span style="font-size:20px;"><span class="fa-stack fa-lg mb-1"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-file-text-o fa-stack-1x fa-inverse"></i></span></span> <a href="index.php"><b>File Manager</b></a></h3>
+<h4 class="mb-0"><span style="font-size:20px;"><span class="fa-stack fa-lg mb-1"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-file-text-o fa-stack-1x fa-inverse"></i></span></span> <a href="index.php"><b>Uploads Manager</b></a></h4>
 </div>
 
 <div class="col-md-12 col-lg-3 mb-4 order-3 order-lg-2">
