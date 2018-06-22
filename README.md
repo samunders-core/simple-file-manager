@@ -1,6 +1,7 @@
-# ADDITIONS
+# CHANGES
 
 - Bootstrap v4 / FontAwesome
+- Images replaced with icons
 - Responsive Design
 - Animated upload progress bar
 - Icons for file types
