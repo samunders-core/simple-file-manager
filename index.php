@@ -583,7 +583,7 @@ $(function(){
 <div class="input-group shadow-sm">
 <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-folder-open-o"></i></span></div>
 <input class="form-control" id="dirname" type="text" name="name" value="" placeholder="Folder Name" autocomplete="off">
-<div class="input-group-append"><button class="btn btn-primary" type="submit" title="Create Folder">Create</button></div>
+<div class="input-group-append"><button class="btn btn-primary" type="submit" title="Create Folder"><i class="fa fa-plus"></i></button></div>
 </div>
 <!--<small class="text-muted">Hypens or underscores instead of spaces recommended</small>-->
 </form>
@@ -604,7 +604,9 @@ $(function(){
 <div class="col-md-12 col-lg-2 mb-4 text-center text-lg-right order-2 order-lg-4">
 <a class="btn btn-primary" href="index.php" title="Home"><i class="fa fa-home"></i></a> 
 <a class="btn btn-primary refresh" href="javascript:;" title="Refresh"><i class="fa fa-refresh"></i></a> 
+<?php if($PASSWORD): ?>
 <a class="btn btn-danger" href="?logout=1" title="Logout"><i class="fa fa-sign-out"></i></a>
+<?php endif; ?>
 </div>
 
 </div>
