@@ -26,7 +26,7 @@ $PASSWORD = 'password';  // Set the password, to access the file manager... (opt
 
 $full_width = false; // Set to true for full width container
 
-$bootstrap_theme = "cerulean"; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
+$bootswatch_theme = "cerulean"; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
 
 /* Available themes...
 cerulean
@@ -54,8 +54,8 @@ yeti
 
 $show_credit = true;
 
-if ($bootstrap_theme) {
-	$bscss = "https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/$bootstrap_theme/bootstrap.min.css";
+if ($bootswatch_theme) {
+	$bscss = "https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/$bootswatch_theme/bootstrap.min.css";
 } else {
 	$bscss = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css";
 }
