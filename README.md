@@ -11,9 +11,10 @@ Just copy `index.php` to a folder on your webserver.
 - Responsive Design
 - Animated upload progress bar
 - Icons for file types
-- Lightbox for images
+- Lightboxes for image file types
 - Optional delete file confirm dialog
 - Optional full width layout
+- Refresh button
 - Logout button
 
 ## Why it is good
