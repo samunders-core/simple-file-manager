@@ -1,4 +1,4 @@
-# CHANGES
+# ADDITIONS...
 
 - Bootstrap v4, responsive design
 - New login form, default password = password
@@ -10,7 +10,7 @@
 - Optional full width layout
 - Refresh and logout button
 
-# ISSUES FOUND (bugs?)
+# ISSUES FOUND... (bugs?)
 
 - $disallowed_extensions doesn't quite work. It doesn't upload a disallowed file, but still seems to go thru the motions...
 
