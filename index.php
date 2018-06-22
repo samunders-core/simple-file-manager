@@ -259,6 +259,7 @@ if($_GET['logout']==1){
 <style>
 
 body { margin: 1em; }
+
 table th:last-child, table td:last-child { text-align: right; }
 table thead { font-size: 1.2rem; }
 
@@ -292,7 +293,7 @@ td.empty { font-size: 1rem; font-style: italic; text-align: center !important; p
 .name.is_text:before { content: "\f0f6"; }
 .name.is_doc:before { content: "\f1c2"; }
 .name.is_pdf:before { content: "\f1c4"; }
-.name.is_ssheet:before { content: "\f1c3"; }
+.name.is_xls:before { content: "\f1c3"; }
 .name.is_archive:before { content: "\f1c6"; }
 .name.is_code:before { content: "\f1c9"; }
 .name.is_exe:before { content: "\f085"; }
