@@ -585,7 +585,6 @@ $(function(){
 <input class="form-control" id="dirname" type="text" name="name" value="" placeholder="Folder Name" autocomplete="off">
 <div class="input-group-append"><button class="btn btn-primary" type="submit" title="Create Folder"><i class="fa fa-plus"></i></button></div>
 </div>
-<!--<small class="text-muted">Hypens or underscores instead of spaces recommended</small>-->
 </form>
 <?php endif; ?>
 </div>
