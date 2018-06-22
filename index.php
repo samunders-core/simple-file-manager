@@ -5,7 +5,7 @@ Simple PHP File Manager
 https://github.com/jcampbell1
 Copyright John Campbell (jcampbell1)
 License: MIT
-Fork: https://github.com/xcartmods
+Forked: https://github.com/xcartmods/simple-file-manager
 ********************************/
 
 //Disable error report for undefined superglobals
@@ -26,7 +26,7 @@ $PASSWORD = 'password';  // Set the password, to access the file manager... (opt
 
 $full_width = false; // Set to true for full width container
 
-$bootstrap_theme = "cerulean"; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
+$bootstrap_theme = "darkly"; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
 
 /* Available themes...
 cerulean
@@ -626,7 +626,7 @@ $(function(){
 </table>
 </div>
 
-<p class="text-center"><small class="text-muted">simple php filemanager by <a href="https://github.com/jcampbell1" target="_blank">jcampbell1</a>. Fork by <a href="https://github.com/xcartmods" target="_blank">xcartmods</a></small></p>
+<p class="text-center"><small class="text-muted">simple php filemanager by <a href="https://github.com/jcampbell1" target="_blank">jcampbell1</a>. Fork by <a href="https://github.com/xcartmods/simple-file-manager" target="_blank">xcartmods</a></small></p>
 
 <?php if($full_width): ?>
 </div>
