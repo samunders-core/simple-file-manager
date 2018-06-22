@@ -1,10 +1,3 @@
-simple-file-manager
-===================
-
-A Simple PHP file manager.  The code is a single php file.  
-
-Just copy `index.php` to a folder on your webserver.  
-
 # ADDITIONS
 
 - Bootstrap v4 / FontAwesome
@@ -16,6 +9,19 @@ Just copy `index.php` to a folder on your webserver.
 - Optional full width layout
 - Refresh button
 - Logout button
+
+# ISSUES FOUND
+
+- $disallowed_extensions doesn't quite work. It doesn't upload a disallowed file, but still seems to go thru the motions...
+
+---
+
+simple-file-manager
+===================
+
+A Simple PHP file manager.  The code is a single php file.  
+
+Just copy `index.php` to a folder on your webserver.  
 
 ## Why it is good
 
