@@ -26,7 +26,7 @@ $PASSWORD = 'password';  // Set the password, to access the file manager... (opt
 
 $full_width = false; // Set to true for full width container
 
-$bootstrap_theme = ""; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
+$bootstrap_theme = "cerulean"; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
 
 /* Available themes...
 cerulean
@@ -51,6 +51,8 @@ superhero
 united
 yeti
 */
+
+$show_credit = true;
 
 if ($bootstrap_theme) {
 	$bscss = "https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/$bootstrap_theme/bootstrap.min.css";
@@ -626,7 +628,9 @@ $(function(){
 </table>
 </div>
 
+<?php if($show_credit): ?>
 <p class="text-center"><small class="text-muted">simple php filemanager by <a href="https://github.com/jcampbell1" target="_blank">jcampbell1</a>. Fork by <a href="https://github.com/xcartmods/simple-file-manager" target="_blank">xcartmods</a></small></p>
+<?php endif; ?>
 
 <?php if($full_width): ?>
 </div>
