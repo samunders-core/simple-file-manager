@@ -9,8 +9,8 @@
 - Images replaced with FontAwesome icons
 - Icons for specific file types
 - Lightboxes for image file types, other files load in new tab
-- Optional delete file confirm dialog setting ($delete_confirm)
-- Optional full width layout setting ($full_width)
+- Delete file confirm dialog setting ($delete_confirm)
+- Full width layout setting ($full_width)
 - Refresh and logout button
 - Login cookie expiry set to 7 days
 
