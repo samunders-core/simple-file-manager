@@ -9,7 +9,7 @@
 - Optional full width layout setting ($full_width)
 - Refresh and logout button
 
-# ISSUES FOUND... (bugs?)
+# ISSUE FOUND... (bug?)
 
 - $disallowed_extensions doesn't quite work. It doesn't upload a disallowed file, but still seems to go thru the motions...
 
