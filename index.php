@@ -256,10 +256,9 @@ if($_GET['logout']==1){
 <link href="<?php echo $bscss ?>" rel="stylesheet">
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.11/css/lightgallery.min.css"  rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 <style>
 
-body { margin: 1em; font-family: 'Open Sans', sans-serif; }
+body { margin: 1em; }
 table th:last-child, table td:last-child { text-align: right; }
 table thead { font-size: 1.2rem; }
 
