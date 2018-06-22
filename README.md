@@ -1,7 +1,7 @@
 # CHANGES
 
 - Bootstrap v4 Responsive Design
-- New login form
+- New login form, default password = password
 - Images replaced with FontAwesome icons
 - Icons for file types
 - Lightboxes for image file types
