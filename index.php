@@ -26,6 +26,38 @@ $PASSWORD = 'password';  // Set the password, to access the file manager... (opt
 
 $full_width = false; // Set to true for full width container
 
+$bootstrap_theme = "superhero"; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
+
+/* Available themes...
+cerulean
+cosmo
+cyborg
+darkly
+flatly
+journal
+litera
+lumen
+lux
+materia
+minty
+pulse
+sandstone
+simplex
+sketchy
+slate
+solar
+spacelab
+superhero
+united
+yeti
+*/
+
+if ($bootstrap_theme) {
+	$bscss = "https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/$bootstrap_theme/bootstrap.min.css";
+} else {
+	$bscss = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css";
+}
+
 if($PASSWORD) {
 
 	session_start();
@@ -44,7 +76,7 @@ if($PASSWORD) {
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="robots" content="noindex, nofollow">
 		<title>File Manager</title>
-		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<link href="$bscss" rel="stylesheet">
 		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 		<style>body { background: #fff; font-family: "Open Sans", sans-serif; } .centered { width: 300px; height: auto; padding: 15px; border-radius: 10px; background: #eee; transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%; overflow: hidden; } .fa-stack { font-size: 32px; }</style>
@@ -219,7 +251,7 @@ if($_GET['logout']==1){
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>File Manager</title>
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php echo $bscss ?>" rel="stylesheet">
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.11/css/lightgallery.min.css"  rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -227,31 +259,31 @@ if($_GET['logout']==1){
 
 body { margin: 1em; font-family: 'Open Sans', sans-serif; }
 table th:last-child, table td:last-child { text-align: right; }
+table thead { font-size: 1.2rem; }
 
 #breadcrumb { padding: 0 0; font-size: 1rem; }
-#breadcrumb .separator { color: #666; margin: 0 10px; }
+#breadcrumb .separator { margin: 0 10px; }
 
 #file_drop_target { border: 4px dashed #ddd; padding: 0.5rem; border-radius: 10px; }
 #file_drop_target.drag_over { border: 4px dashed #28a745; }
 
 #upload_progress { padding: 4px 0; }
-#upload_progress .error { color: #dc3545; }
 #upload_progress > div { padding: 4px 0; }
-.progress { background-color: #ddd; height: 1rem; }
+.progress { background-color: #fff; height: 1rem; }
 
 .no_write #mkdir, .no_write #file_drop_target { display: none; }
 .sort_hide { display: none; }
 
 td { font-size: 0.9rem; white-space: nowrap; vertical-align: middle !important; }
 td.first { font-size: 1rem; white-space: normal; vertical-align: middle !important; font-weight: normal; }
-td.empty { font-size: 1rem; font-style: italic; text-align: center !important; padding: 2em 0; background: #fff !important; }
+td.empty { font-size: 1rem; font-style: italic; text-align: center !important; padding: 2em 0; }
 
 .is_dir .size { color: transparent; font-size: 0; }
-.is_dir .size:before { content: "--"; font-size: 1rem; color: #666; font-size: 1rem; }
+.is_dir .size:before { content: "--"; font-size: 1rem; color: #ccc; font-size: 1rem; }
 .is_dir .download { visibility: hidden; }
 
-.is_dir .name:before { content: "\f07b"; font-family: FontAwesome; font-size: 1.5rem; padding-right: 5px; color: #007bff; vertical-align: middle; }
-.name:before { content: "\f016"; font-family: FontAwesome; font-size: 1.25rem; padding-right: 5px; color: #007bff; vertical-align: middle; }
+.is_dir .name:before { content: "\f07b"; font-family: FontAwesome; font-size: 1.5rem; padding-right: 5px; vertical-align: middle; }
+.name:before { content: "\f016"; font-family: FontAwesome; font-size: 1.25rem; padding-right: 5px; vertical-align: middle; }
 
 .name.is_image:before { content: "\f1c5"; }
 .name.is_video:before { content: "\f1c8"; }
@@ -495,7 +527,7 @@ $(function(){
 	}
 	function renderBreadcrumbs(path) {
 		var base = "",
-			$html = $('<div/>').append( $('<i class="fa fa-home text-primary"></i> <a href=#>Home</a></div>') );
+			$html = $('<div/>').append( $('<i class="fa fa-home"></i> <a href=#>Home</a></div>') );
 		$.each(path.split('/'),function(k,v){
 			if(v) {
 				var v_as_text = decodeURIComponent(v);
@@ -540,7 +572,7 @@ $(function(){
 <div class="row align-items-center">
 
 <div class="col-md-12 col-lg-3 mb-4 text-center text-lg-left order-1 order-lg-1">
-<h3 class="mb-0"><a href="index.php" class="text-dark"><span style="font-size:20px;"><span class="fa-stack fa-lg mb-1"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-file-text-o fa-stack-1x fa-inverse"></i></span></span> <b>File Manager</b></a></h3>
+<h3 class="mb-0"><a href="index.php"><span style="font-size:20px;"><span class="fa-stack fa-lg mb-1"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-file-text-o fa-stack-1x fa-inverse"></i></span></span> <b>File Manager</b></a></h3>
 </div>
 
 <div class="col-md-12 col-lg-3 mb-4 order-3 order-lg-2">
@@ -581,13 +613,13 @@ $(function(){
 
 <div class="table-responsive mb-4">
 <table class="table table-bordered table-striped table-hover shadow-sm" id="table">
-<thead class="thead-light">
+<thead>
 <tr>
-<th><a class="text-dark" href="javascript:;">Name</a></th>
-<th><a class="text-dark" href="javascript:;">Size</a></th>
-<th><a class="text-dark" href="javascript:;">Modified</a></th>
-<th><a class="text-dark" href="javascript:;">Permissions</a></th>
-<th><a class="text-dark" href="javascript:;">Actions</a></th>
+<th><a href="javascript:;">Name</a></th>
+<th><a href="javascript:;">Size</a></th>
+<th><a href="javascript:;">Modified</a></th>
+<th><a href="javascript:;">Permissions</a></th>
+<th><a href="javascript:;">Actions</a></th>
 </tr>
 </thead>
 <tbody id="list"></tbody>
