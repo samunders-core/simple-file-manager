@@ -5,6 +5,17 @@ A Simple PHP file manager.  The code is a single php file.
 
 Just copy `index.php` to a folder on your webserver.  
 
+# ADDITIONS
+
+- Bootstrap v4 / FontAwesome
+- Responsive Design
+- Animated upload progress bar
+- Icons for file types
+- Lightbox for images
+- Optional delete file confirm dialog
+- Optional full width layout
+- Logout button
+
 ## Why it is good
 
 - Single file, there are no images, or css folders.  
