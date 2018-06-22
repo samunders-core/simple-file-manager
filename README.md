@@ -32,4 +32,4 @@ HT: [@beardog108](https://github.com/beardog108)
 
 ## Screenshot
 
-![Screenshot](https://raw.github.com/jcampbell1/simple-file-manager/master/screenshot.png "Screenshot")
+![Screenshot](https://raw.github.com/xcartmods/simple-file-manager/master/screenshot.png "Screenshot")
