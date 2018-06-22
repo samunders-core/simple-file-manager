@@ -1,15 +1,14 @@
 # CHANGES
 
-- Bootstrap v4 Responsive Design
+- Bootstrap v4, responsive design
 - New login form, default password = password
 - Images replaced with FontAwesome icons
 - Icons for file types
 - Lightboxes for image file types
-- Animated upload progress bar
+- Other files load in new tab
 - Optional delete file confirm dialog
 - Optional full width layout
-- Refresh button
-- Logout button
+- Refresh and logout button
 
 # ISSUES FOUND (bugs?)
 
