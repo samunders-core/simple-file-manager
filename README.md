@@ -10,7 +10,7 @@
 - Refresh button
 - Logout button
 
-# ISSUES FOUND
+# ISSUES FOUND (bugs?)
 
 - $disallowed_extensions doesn't quite work. It doesn't upload a disallowed file, but still seems to go thru the motions...
 
