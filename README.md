@@ -3,11 +3,10 @@
 - Bootstrap v4, responsive design
 - New login form, default password = password
 - Images replaced with FontAwesome icons
-- Icons for file types
-- Lightboxes for image file types
-- Other files load in new tab
-- Optional delete file confirm dialog
-- Optional full width layout
+- Icons for specific file types
+- Lightboxes for image file types, other files load in new tab
+- Optional delete file confirm dialog setting ($delete_confirm)
+- Optional full width layout setting ($full_width)
 - Refresh and logout button
 
 # ISSUES FOUND... (bugs?)
