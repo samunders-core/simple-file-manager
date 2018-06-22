@@ -1,11 +1,11 @@
 # CHANGES
 
-- Bootstrap v4 / FontAwesome
-- Images replaced with icons
-- Responsive Design
-- Animated upload progress bar
+- Bootstrap v4 Responsive Design
+- New login form
+- Images replaced with FontAwesome icons
 - Icons for file types
 - Lightboxes for image file types
+- Animated upload progress bar
 - Optional delete file confirm dialog
 - Optional full width layout
 - Refresh button
