@@ -76,7 +76,7 @@ if($PASSWORD) {
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="robots" content="noindex, nofollow">
 		<title>File Manager</title>
-		<link href="$bscss" rel="stylesheet">
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
 		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 		<style>body { background: #fff; font-family: "Open Sans", sans-serif; } .centered { width: 300px; height: auto; padding: 15px; border-radius: 10px; background: #eee; transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%; overflow: hidden; } .fa-stack { font-size: 32px; }</style>
