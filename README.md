@@ -11,7 +11,7 @@
 - Lightboxes for image file types, other files load in new tab
 - Delete file confirm dialog setting ($delete_confirm)
 - Full width layout setting ($full_width)
-- Refresh and logout button
+- Home, refresh and logout buttons
 - Login cookie expiry set to 7 days
 
 # ISSUE FOUND... (bug?)
