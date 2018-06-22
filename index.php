@@ -271,7 +271,7 @@ table thead { font-size: 1.2rem; }
 
 #upload_progress { padding: 4px 0; }
 #upload_progress > div { padding: 4px 0; }
-.progress { background-color: #fff; height: 1rem; }
+.progress { background-color: rgba(0,0,0,0.1); height: 1rem; }
 
 .no_write #mkdir, .no_write #file_drop_target { display: none; }
 .sort_hide { display: none; }
