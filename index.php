@@ -84,7 +84,7 @@ if($PASSWORD) {
 		<style>body { background: #fff; font-family: "Open Sans", sans-serif; } .centered { width: 300px; height: auto; padding: 15px; border-radius: 10px; background: #f5f5f5; transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%; overflow: hidden; } .fa-stack { font-size: 32px; }</style>
 		</head>
 		<body>
-		<div class="centered text-center border">
+		<div class="centered text-center border shadow-sm">
 		<span class="fa-stack fa-lg mb-1"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-file-text-o fa-stack-1x fa-inverse"></i></span>
 		<h3 class="mb-3"><b>File Manager</b></h3>
 		<form action=? method="post" autocomplete="off" class="m-0">
