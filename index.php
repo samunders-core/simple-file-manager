@@ -52,7 +52,7 @@ united
 yeti
 */
 
-$show_credit = true;
+$show_credit = false;
 
 if ($bootswatch_theme) {
 	$bscss = "https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/$bootswatch_theme/bootstrap.min.css";
@@ -262,6 +262,7 @@ body { margin: 1em; }
 
 table th:last-child, table td:last-child { text-align: right; }
 table thead { font-size: 1.2rem; }
+table thead a { display: inline-block; }
 
 #breadcrumb { padding: 0 0; font-size: 1rem; }
 #breadcrumb .separator { margin: 0 10px; }
@@ -582,7 +583,7 @@ $(function(){
 <form action="?" method="post" id="mkdir" class="m-0 w-100" />
 <div class="input-group shadow-sm">
 <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-folder-open-o"></i></span></div>
-<input class="form-control" id="dirname" type="text" name="name" value="" placeholder="Folder Name" autocomplete="off">
+<input class="form-control" id="dirname" type="text" name="name" value="" placeholder="Folder Name" autocomplete="off" required>
 <div class="input-group-append"><button class="btn btn-primary" type="submit" title="Create Folder"><i class="fa fa-plus"></i></button></div>
 </div>
 </form>
