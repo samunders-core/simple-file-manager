@@ -595,7 +595,7 @@ $(function(){
 <div id="file_drop_target">
 <div class="custom-file shadow-sm">
 <input type="file" class="custom-file-input" id="customFile" multiple>
-<label class="custom-file-label" for="customFile">Choose or Drop File(s) Here</label>
+<label class="custom-file-label" for="customFile">Drop File(s) Here, or</label>
 </div>
 </div>
 <?php endif; ?>
