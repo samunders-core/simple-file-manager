@@ -63,7 +63,7 @@ if ($bootswatch_theme) {
 
 if ($PASSWORD && $PASSWORD_STRONG) {
 	$hasLetter  = preg_match('/[a-zA-Z]/',    $PASSWORD);
-	$hasNumber  = preg_match('/\d/',         $PASSWORD);
+	$hasNumber  = preg_match('/\d/',          $PASSWORD);
 	$hasSpecial = preg_match('/[^a-zA-Z\d]/', $PASSWORD);
 	$hasAll     = $hasLetter && $hasNumber && $hasSpecial;
 	if ($PASSWORD == "password" || strlen($PASSWORD) < 8 || !$hasAll) {
