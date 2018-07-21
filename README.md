@@ -2,6 +2,8 @@
 
 ![Screenshot](https://raw.github.com/xcartmods/simple-file-manager/master/screenshot.jpg "Screenshot")
 
+![Screenshot](https://raw.github.com/xcartmods/simple-file-manager/master/screenshot2.jpg "Screenshot")
+
 # ADDITIONS...
 
 - Bootstrap v4, Bootswatch themes ($bootswatch_theme), responsive design
@@ -13,10 +15,6 @@
 - Full width layout setting ($full_width)
 - Home, refresh and logout buttons
 - Login cookie expiry set to 7 days
-
-# ISSUE FOUND... (bug?)
-
-- $disallowed_extensions doesn't quite work. It doesn't upload a disallowed file, but still seems to go thru the motions...
 
 ---
 
