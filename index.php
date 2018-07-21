@@ -22,43 +22,8 @@ $disallowed_extensions = ['php','com','bat','vbs'];  // must be an array. Extens
 
 $hidden_extensions = ['php','htaccess']; // must be an array of lowercase file extensions. Extensions hidden in directory index
 
-$PASSWORD = 'changeme123$';  // Set the password, to access the file manager... (optional)
-$PASSWORD_STRONG = true;  // Set to true if you want to enforce a strong password
-
-if ($PASSWORD && $PASSWORD_STRONG) {
-	$hasLetter  = preg_match('/[a-zA-Z]/',    $PASSWORD);
-	$hasNumber   = preg_match('/\d/',         $PASSWORD);
-	$hasSpecial = preg_match('/[^a-zA-Z\d]/', $PASSWORD);
-	$hasAll     = $hasLetter && $hasNumber && $hasSpecial;
-	if ($PASSWORD == "changeme123$" || strlen($PASSWORD) < 8 || !$hasAll) {
-	echo '
-		<html lang="en">
-		<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<meta name="robots" content="noindex, nofollow">
-		<title>File Manager</title>
-		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" rel="stylesheet">
-		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-		<style>.centered { width: 300px; height: auto; padding: 1rem; transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%; overflow: hidden; }</style>
-		</head>
-		<body>
-		<div class="centered text-center border rounded shadow-sm bg-light">
-		<p><i class="fa fa-3x fa-warning text-danger"></i></p>
-		<p><b>The password must contain...</b></p>
-		<ul class="text-left m-0">
-		<li>At least 8 characters</li>
-		<li>At least 1 letter</li>
-		<li>At least 1 number</li>
-		<li>At least 1 special character</li>
-		<ul>
-		</div>
-		</body>
-		</html>
-	';
-	exit;
-	}
-}
+$PASSWORD = 'password';  // Set the password, to access the file manager... (optional)
+$PASSWORD_STRONG = false;  // Set to true if you want to enforce a strong password - Strong passwords must contain at least 8 characters, 1 letter, 1 number and 1 special character
 
 $full_width = false; // Set to true for full width container
 
@@ -94,6 +59,42 @@ if ($bootswatch_theme) {
 	$bscss = "https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/$bootswatch_theme/bootstrap.min.css";
 } else {
 	$bscss = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css";
+}
+
+if ($PASSWORD && $PASSWORD_STRONG) {
+	$hasLetter  = preg_match('/[a-zA-Z]/',    $PASSWORD);
+	$hasNumber   = preg_match('/\d/',         $PASSWORD);
+	$hasSpecial = preg_match('/[^a-zA-Z\d]/', $PASSWORD);
+	$hasAll     = $hasLetter && $hasNumber && $hasSpecial;
+	if ($PASSWORD == "password" || strlen($PASSWORD) < 8 || !$hasAll) {
+	echo '
+		<html lang="en">
+		<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="robots" content="noindex, nofollow">
+		<title>File Manager</title>
+		<link href="'.$bscss.'" rel="stylesheet">
+		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<style>.centered { width: 300px; height: auto; padding: 1rem; transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%; overflow: hidden; }</style>
+		</head>
+		<body>
+		<div class="centered text-center border rounded shadow-sm bg-light">
+		<p><i class="fa fa-3x fa-warning text-danger"></i></p>
+		<p><b>The password must contain</b></p>
+		<ul class="text-left m-0">
+		<li>At least 8 characters</li>
+		<li>At least 1 letter</li>
+		<li>At least 1 number</li>
+		<li>At least 1 special character</li>
+		<ul>
+		</div>
+		</body>
+		</html>
+	';
+
+	exit;
+	}
 }
 
 if($PASSWORD) {
