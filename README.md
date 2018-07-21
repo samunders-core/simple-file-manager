@@ -6,7 +6,7 @@
 
 # ADDITIONS...
 
-- Bootstrap v4, Bootswatch themes ($bootswatch_theme), responsive design
+- Bootstrap v4, Bootswatch themes ($bootswatch_theme), responsive
 - New login form, default password = password
 - $PASSWORD_STRONG added
 - Images replaced with FontAwesome icons
