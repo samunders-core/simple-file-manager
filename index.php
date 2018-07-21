@@ -22,7 +22,7 @@ $disallowed_extensions = ['php','com','bat','vbs'];  // must be an array. Extens
 
 $hidden_extensions = ['php','htaccess']; // must be an array of lowercase file extensions. Extensions hidden in directory index
 
-$PASSWORD = 'philfunk';  // Set the password, to access the file manager... (optional)
+$PASSWORD = 'password';  // Set the password, to access the file manager... (optional)
 
 $full_width = false; // Set to true for full width container
 
