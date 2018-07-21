@@ -14,6 +14,7 @@
 - Delete file confirm dialog setting ($delete_confirm)
 - Full width layout setting ($full_width)
 - Home, refresh and logout buttons
+- $PASSWORD_STRONG added
 
 ---
 
