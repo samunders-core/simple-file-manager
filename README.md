@@ -14,7 +14,6 @@
 - Delete file confirm dialog setting ($delete_confirm)
 - Full width layout setting ($full_width)
 - Home, refresh and logout buttons
-- Login cookie expiry set to 7 days
 
 ---
 
