@@ -22,11 +22,11 @@ $disallowed_extensions = ['php','com','bat','vbs'];  // must be an array. Extens
 
 $hidden_extensions = ['php','htaccess']; // must be an array of lowercase file extensions. Extensions hidden in directory index
 
-$PASSWORD = 'password';  // Set the password, to access the file manager... (optional)
+$PASSWORD = 'philfunk';  // Set the password, to access the file manager... (optional)
 
 $full_width = false; // Set to true for full width container
 
-$bootswatch_theme = 'cerulean'; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
+$bootswatch_theme = 'flatly'; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
 
 /* Available themes...
 cerulean
@@ -52,12 +52,12 @@ united
 yeti
 */
 
-$show_credit = false;
+$show_credit = true;
 
 if ($bootswatch_theme) {
-	$bscss = "https://stackpath.bootstrapcdn.com/bootswatch/4.1.1/$bootswatch_theme/bootstrap.min.css";
+	$bscss = "https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/$bootswatch_theme/bootstrap.min.css";
 } else {
-	$bscss = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css";
+	$bscss = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css";
 }
 
 if($PASSWORD) {
@@ -78,14 +78,13 @@ if($PASSWORD) {
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="robots" content="noindex, nofollow">
 		<title>File Manager</title>
-		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<link href="'.$bscss.'" rel="stylesheet">
 		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-		<style>body { background: #fff; font-family: "Open Sans", sans-serif; } .centered { width: 300px; height: auto; padding: 15px; border-radius: 10px; background: #f5f5f5; transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%; overflow: hidden; } .fa-stack { font-size: 32px; }</style>
+		<style>.centered { width: 300px; height: auto; padding: 1rem; transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%; overflow: hidden; }</style>
 		</head>
 		<body>
-		<div class="centered text-center border shadow-sm">
-		<span class="fa-stack fa-lg mb-1"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-file-text-o fa-stack-1x fa-inverse"></i></span>
+		<div class="centered text-center border rounded shadow-sm bg-light">
+		<i class="fa fa-file-text-o fa-3x mb-3"></i>
 		<h3 class="mb-3"><b>File Manager</b></h3>
 		<form action=? method="post" autocomplete="off" class="m-0">
 		<div class="input-group">
@@ -298,6 +297,8 @@ td.empty { font-size: 1rem; font-style: italic; text-align: center !important; p
 .name.is_archive:before { content: "\f1c6"; }
 .name.is_code:before { content: "\f1c9"; }
 .name.is_exe:before { content: "\f085"; }
+
+.fa-14 { font-size: 14px; }
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -512,8 +513,8 @@ $(function(){
 		var allow_direct_link = <?php echo $allow_direct_link?'true':'false'; ?>;
         	if (!data.is_dir && !allow_direct_link)  $link.css('pointer-events','none');
 		var $dl_link = $('<a/>').attr('href','?do=download&file='+ encodeURIComponent(data.path))
-			.addClass('download btn btn-sm btn-primary mr-2').attr('title','Download').html('<i class="fa fa-download"></i>');
-		var $delete_link = $('<a href="#" />').attr('data-file',data.path).attr('title','Delete').addClass('delete btn btn-sm btn-danger').html('<i class="fa fa-trash"></i>');
+			.addClass('download btn btn-sm btn-primary mr-2').attr('title','Download').html('<i class="fa fa-download fa-14"></i>');
+		var $delete_link = $('<a href="#" />').attr('data-file',data.path).attr('title','Delete').addClass('delete btn btn-sm btn-danger').html('<i class="fa fa-trash fa-14"></i>');
 		var perms = [];
 		if(data.is_readable) perms.push('read');
 		if(data.is_writable) perms.push('write');
@@ -575,7 +576,7 @@ $(function(){
 <div class="row align-items-center">
 
 <div class="col-md-12 col-lg-3 mb-4 text-center text-lg-left order-1 order-lg-1">
-<h4 class="mb-0"><span style="font-size:20px;"><span class="fa-stack fa-lg mb-1"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-file-text-o fa-stack-1x fa-inverse"></i></span></span> <a href="index.php"><b>File Manager</b></a></h4>
+<h3 class="mb-0"><i class="fa fa-file-text-o mr-1"></i> <a href="index.php"><b>File Manager</b></a></h3>
 </div>
 
 <div class="col-md-12 col-lg-3 mb-4 order-3 order-lg-2">
@@ -584,7 +585,7 @@ $(function(){
 <div class="input-group shadow-sm">
 <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-folder-open-o"></i></span></div>
 <input class="form-control" id="dirname" type="text" name="name" value="" placeholder="Folder Name" autocomplete="off" required>
-<div class="input-group-append"><button class="btn btn-primary" type="submit" title="Create Folder"><i class="fa fa-plus"></i></button></div>
+<div class="input-group-append"><button class="btn btn-primary" type="submit" title="Create Folder"><i class="fa fa-plus fa-14"></i></button></div>
 </div>
 </form>
 <?php endif; ?>
@@ -602,10 +603,10 @@ $(function(){
 </div>
 
 <div class="col-md-12 col-lg-2 mb-4 text-center text-lg-right order-2 order-lg-4">
-<a class="btn btn-primary" href="index.php" title="Home"><i class="fa fa-home"></i></a> 
-<a class="btn btn-primary refresh" href="javascript:;" title="Refresh"><i class="fa fa-refresh"></i></a> 
+<a class="btn btn-primary" href="index.php" title="Home"><i class="fa fa-home fa-14"></i></a> 
+<a class="btn btn-primary refresh" href="javascript:;" title="Refresh"><i class="fa fa-refresh fa-14"></i></a> 
 <?php if($PASSWORD): ?>
-<a class="btn btn-danger" href="?logout=1" title="Logout"><i class="fa fa-sign-out"></i></a>
+<a class="btn btn-danger" href="?logout=1" title="Logout"><i class="fa fa-sign-out fa-14"></i></a>
 <?php endif; ?>
 </div>
 
