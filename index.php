@@ -12,7 +12,7 @@ Forked: https://github.com/xcartmods/simple-file-manager
 error_reporting( error_reporting() & ~E_NOTICE );
 
 //Security options
-$THIS_FILENAME = "manager.php"; // This file name!
+$THIS_FILENAME = "index.php"; // This file name!
 $PASSWORD = 'ch@ng3me123$';  // Set the password, to access the file manager... (optional)
 $PASSWORD_STRONG = true;  // Set to true if you want to enforce a strong password - Strong passwords must contain at least 8 characters, 1 letter, 1 number and 1 special character
 
