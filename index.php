@@ -12,22 +12,23 @@ Forked: https://github.com/xcartmods/simple-file-manager
 error_reporting( error_reporting() & ~E_NOTICE );
 
 //Security options
+$this_filename = "index.php"; // This file name!
 $allow_delete = true; // Set to false to disable delete button and delete POST request.
 $delete_confirm = true; // Set to false to disable delete confirmation alert
 $allow_upload = true; // Set to true to allow upload files
 $allow_create_folder = true; // Set to false to disable folder creation
 $allow_direct_link = true; // Set to false to only allow downloads and not direct link
 
-$disallowed_extensions = ['php','com','bat','vbs','sh'];  // must be an array. Extensions disallowed to be uploaded
+$disallowed_extensions = ['php','com','bat','cmd','reg','vbs','vbe','jse','sh','jar','java','msi','ws','wsf','scf','scr','pif','hta','cpl','gadget','application','lnk'];  // must be an array. Extensions disallowed to be uploaded
 
-$hidden_extensions = ['php','htaccess']; // must be an array of lowercase file extensions. Extensions hidden in directory index
+$hidden_extensions = ['php','htaccess','well-known']; // must be an array of lowercase file extensions. Extensions hidden in directory index
 
 $PASSWORD = 'password';  // Set the password, to access the file manager... (optional)
-$PASSWORD_STRONG = false;  // Set to true if you want to enforce a strong password - Strong passwords must contain at least 8 characters, 1 letter, 1 number and 1 special character
+$PASSWORD_STRONG = true;  // Set to true if you want to enforce a strong password - Strong passwords must contain at least 8 characters, 1 letter, 1 number and 1 special character
 
 $full_width = false; // Set to true for full width container
 
-$bootswatch_theme = 'cerulean'; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
+$bootswatch_theme = ''; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
 
 /* Available themes...
 cerulean
@@ -56,9 +57,9 @@ yeti
 $show_credit = true;
 
 if ($bootswatch_theme) {
-	$bscss = "https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/$bootswatch_theme/bootstrap.min.css";
+	$bscss = "https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/$bootswatch_theme/bootstrap.min.css"; // https://www.bootstrapcdn.com/bootswatch/
 } else {
-	$bscss = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css";
+	$bscss = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"; // https://www.bootstrapcdn.com/
 }
 
 if ($PASSWORD && $PASSWORD_STRONG) {
@@ -66,7 +67,7 @@ if ($PASSWORD && $PASSWORD_STRONG) {
 	$hasNumber  = preg_match('/\d/',          $PASSWORD);
 	$hasSpecial = preg_match('/[^a-zA-Z\d]/', $PASSWORD);
 	$hasAll     = $hasLetter && $hasNumber && $hasSpecial;
-	if ($PASSWORD == "password" || strlen($PASSWORD) < 8 || !$hasAll) {
+	if ($PASSWORD == "ch@ngeme123$" || strlen($PASSWORD) < 8 || !$hasAll) {
 	echo '
 		<html lang="en">
 		<head>
@@ -81,13 +82,17 @@ if ($PASSWORD && $PASSWORD_STRONG) {
 		<body>
 		<div class="centered text-center border rounded shadow-sm bg-light">
 		<p><i class="fa fa-3x fa-warning text-danger"></i></p>
-		<p><b>The password must contain</b></p>
-		<ul class="text-left m-0">
+		<p><b>Please change the password in /uploads/manager.php</b></p>
+		<hr>
+		<p>The password must contain...</p>
+		<ul class="text-left">
 		<li>At least 8 characters</li>
 		<li>At least 1 letter</li>
 		<li>At least 1 number</li>
 		<li>At least 1 special character</li>
-		<ul>
+		</ul>
+		<hr>
+		<p class="m-0"><a class="btn btn-primary" href="manager.php">OK, I have changed it!</a></p>
 		</div>
 		</body>
 		</html>
@@ -215,6 +220,7 @@ if($_GET['do'] == 'list') {
 	exit;
 } elseif ($_GET['do'] == 'download') {
 	$filename = basename($file);
+	if ($filename != $this_filename) {
 	header('Content-Type: ' . mime_content_type($file));
 	header('Content-Length: '. filesize($file));
 	header(sprintf('Content-Disposition: attachment; filename=%s',
@@ -222,6 +228,7 @@ if($_GET['do'] == 'list') {
 	ob_flush();
 	readfile($file);
 	exit;
+	}
 }
 function rmrf($dir) {
 	if(is_dir($dir)) {
@@ -278,7 +285,7 @@ $MAX_UPLOAD_SIZE = min(asBytes(ini_get('post_max_size')), asBytes(ini_get('uploa
 
 if($_GET['logout']==1){
 	$_SESSION['_sfm_allowed'] = false;
-	header("Location: index.php");
+	header("Location: manager.php");
 }
 
 ?>
@@ -336,6 +343,8 @@ td.empty { font-size: 1rem; font-style: italic; text-align: center !important; p
 .name.is_exe:before { content: "\f085"; }
 
 .fa-14 { font-size: 14px; }
+
+span.indicator { float: right; }
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -516,7 +525,7 @@ $(function(){
 
 		var $extn = getFileExtension(data.path);
 
-		if ($extn == "jpg" || $extn == "jpeg" || $extn == "pjpeg" || $extn == "gif" || $extn == "png") {
+		if ($extn == "jpg" || $extn == "jpeg" || $extn == "pjpeg" || $extn == "gif" || $extn == "png" || $extn == "svg") {
 			$($link).removeAttr('target')
 			.addClass('is_image')
 			.attr('href',data.path)
@@ -613,7 +622,7 @@ $(function(){
 <div class="row align-items-center">
 
 <div class="col-md-12 col-lg-3 mb-4 text-center text-lg-left order-1 order-lg-1">
-<h3 class="mb-0"><i class="fa fa-file-text-o mr-1"></i> <a href="index.php"><b>File Manager</b></a></h3>
+<h3 class="mb-0"><i class="fa fa-file-text-o mr-1"></i> <a href="manager.php"><b>File Manager</b></a></h3>
 </div>
 
 <div class="col-md-12 col-lg-3 mb-4 order-3 order-lg-2">
@@ -640,7 +649,7 @@ $(function(){
 </div>
 
 <div class="col-md-12 col-lg-2 mb-4 text-center text-lg-right order-2 order-lg-4">
-<a class="btn btn-primary" href="index.php" title="Home"><i class="fa fa-home fa-14"></i></a> 
+<a class="btn btn-primary" href="manager.php" title="Home"><i class="fa fa-home fa-14"></i></a> 
 <a class="btn btn-primary refresh" href="javascript:;" title="Refresh"><i class="fa fa-refresh fa-14"></i></a> 
 <?php if($PASSWORD): ?>
 <a class="btn btn-danger" href="?logout=1" title="Logout"><i class="fa fa-sign-out fa-14"></i></a>
