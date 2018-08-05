@@ -23,7 +23,7 @@ $disallowed_extensions = ['php','com','bat','cmd','reg','vbs','vbe','jse','sh','
 
 $hidden_extensions = ['php','htaccess','well-known']; // must be an array of lowercase file extensions. Extensions hidden in directory index
 
-$PASSWORD = 'password';  // Set the password, to access the file manager... (optional)
+$PASSWORD = 'ch@ngeme123$';  // Set the password, to access the file manager... (optional)
 $PASSWORD_STRONG = true;  // Set to true if you want to enforce a strong password - Strong passwords must contain at least 8 characters, 1 letter, 1 number and 1 special character
 
 $full_width = false; // Set to true for full width container
