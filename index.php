@@ -82,7 +82,7 @@ if ($PASSWORD && $PASSWORD_STRONG) {
 		<body>
 		<div class="centered text-center border rounded shadow-sm bg-light">
 		<p><i class="fa fa-3x fa-warning text-danger"></i></p>
-		<p><b>Please change the password in /uploads/manager.php</b></p>
+		<p><b>Please change the password!</b></p>
 		<hr>
 		<p>The password must contain...</p>
 		<ul class="text-left">
