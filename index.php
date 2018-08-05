@@ -12,7 +12,8 @@ Forked: https://github.com/xcartmods/simple-file-manager
 error_reporting( error_reporting() & ~E_NOTICE );
 
 //Security options
-$this_filename = "index.php"; // This file name!
+$THIS_FILENAME = "index.php"; // This file name!
+
 $allow_delete = true; // Set to false to disable delete button and delete POST request.
 $delete_confirm = true; // Set to false to disable delete confirmation alert
 $allow_upload = true; // Set to true to allow upload files
@@ -23,7 +24,7 @@ $disallowed_extensions = ['php','com','bat','cmd','reg','vbs','vbe','jse','sh','
 
 $hidden_extensions = ['php','htaccess','well-known']; // must be an array of lowercase file extensions. Extensions hidden in directory index
 
-$PASSWORD = 'ch@ngeme123$';  // Set the password, to access the file manager... (optional)
+$PASSWORD = 'ch@ng3me123$';  // Set the password, to access the file manager... (optional)
 $PASSWORD_STRONG = true;  // Set to true if you want to enforce a strong password - Strong passwords must contain at least 8 characters, 1 letter, 1 number and 1 special character
 
 $full_width = false; // Set to true for full width container
@@ -67,7 +68,7 @@ if ($PASSWORD && $PASSWORD_STRONG) {
 	$hasNumber  = preg_match('/\d/',          $PASSWORD);
 	$hasSpecial = preg_match('/[^a-zA-Z\d]/', $PASSWORD);
 	$hasAll     = $hasLetter && $hasNumber && $hasSpecial;
-	if ($PASSWORD == "ch@ngeme123$" || strlen($PASSWORD) < 8 || !$hasAll) {
+	if ($PASSWORD == "ch@ng3me123$" || strlen($PASSWORD) < 8 || !$hasAll) {
 	echo '
 		<html lang="en">
 		<head>
@@ -220,7 +221,7 @@ if($_GET['do'] == 'list') {
 	exit;
 } elseif ($_GET['do'] == 'download') {
 	$filename = basename($file);
-	if ($filename != $this_filename) {
+	if ($filename != $THIS_FILENAME) {
 	header('Content-Type: ' . mime_content_type($file));
 	header('Content-Length: '. filesize($file));
 	header(sprintf('Content-Disposition: attachment; filename=%s',
