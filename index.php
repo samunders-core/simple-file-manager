@@ -630,7 +630,7 @@ $(function(){
 
 <div class="col-md-12 col-lg-3 mb-4 order-3 order-lg-2">
 <?php if($allow_create_folder): ?>
-<form action="?" method="post" id="mkdir" class="m-0 w-100" />
+<form action="?" method="post" id="mkdir" class="m-0 w-100">
 <div class="input-group shadow-sm">
 <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-folder-open-o"></i></span></div>
 <input class="form-control" id="dirname" type="text" name="name" value="" placeholder="Folder Name" autocomplete="off" required>
