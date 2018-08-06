@@ -32,7 +32,7 @@ $disallowed_extensions = ['php','com','bat','cmd','reg','vbs','vbe','jse','sh','
 $hidden_extensions = ['php','htaccess','well-known']; // must be an array of lowercase file extensions. Extensions hidden in directory index
 
 $full_width = false; // Set to true for full width container
-$bootswatch_theme = ''; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
+$bootswatch_theme = 'cerulean'; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
 
 // Available themes...
 //--------------------------------
