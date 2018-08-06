@@ -6,9 +6,10 @@
 
 # ADDITIONS...
 
+- New security setting - $THIS_FILENAME
+- New security setting - $PASSWORD_STRONG
 - Bootstrap v4, Bootswatch themes ($bootswatch_theme), responsive
 - New login form, default password = ch@ng3me123$
-- $PASSWORD_STRONG to enforce a strong password, true by default
 - Images replaced with FontAwesome icons
 - Icons for specific file types
 - Lightboxes for image file types, other files load in new tab
