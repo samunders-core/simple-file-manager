@@ -16,7 +16,7 @@ error_reporting( error_reporting() & ~E_NOTICE );
 // Security options
 //--------------------------------
 
-$THIS_FILENAME = 'manager.php'; // This file name!
+$THIS_FILENAME = 'index.php'; // This file name!
 if (basename(__FILE__) != $THIS_FILENAME) { exit; }
 
 $PASSWORD = 'ch@ng3me123$';  // Set the password, to access the file manager... (optional)
