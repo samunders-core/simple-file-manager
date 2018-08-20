@@ -65,7 +65,7 @@ $show_credit = true;
 //--------------------------------
 
 if ($bootswatch_theme) {
-	$bs_css = "https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/$bootswatch_theme/bootstrap.min.css"; // https://www.bootstrapcdn.com/bootswatch/
+	$bs_css = "https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/$bootswatch_theme/bootstrap.min.css"; // https://www.bootstrapcdn.com/bootswatch/
 } else {
 	$bs_css = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"; // https://www.bootstrapcdn.com/
 }
