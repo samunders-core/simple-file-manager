@@ -16,7 +16,7 @@ error_reporting( error_reporting() & ~E_NOTICE );
 // Security options
 //--------------------------------
 
-$THIS_FILENAME = 'index.php'; // This file name!
+$THIS_FILENAME = 'manager.php'; // This file name!
 if (basename(__FILE__) != $THIS_FILENAME) { exit; }
 
 $PASSWORD = 'ch@ng3me123$';  // Set the password, to access the file manager... (optional)
@@ -60,7 +60,7 @@ united
 yeti
 */
 
-$show_credit = true;
+$show_credit = false;
 
 //--------------------------------
 
@@ -114,13 +114,17 @@ if ($PASSWORD && $PASSWORD_STRONG) {
 	}
 }
 
+$SESSION_ID = $_SERVER['PHP_SELF'];
+
 if($PASSWORD) {
 	session_start();
-	if(!$_SESSION['_sfm_allowed']) {
+	//if(!$_SESSION['_sfm_allowed']) {
+	if(!$_SESSION[$SESSION_ID]) {
 		// sha1, and random bytes to thwart timing attacks.  Not meant as secure hashing.
 		$t = bin2hex(openssl_random_pseudo_bytes(10));
 		if($_POST['p'] && sha1($t.$_POST['p']) === sha1($t.$PASSWORD)) {
-			$_SESSION['_sfm_allowed'] = true;
+			//$_SESSION['_sfm_allowed'] = true;
+			$_SESSION[$SESSION_ID] = true;
 			header('Location: ?');
 		}
 		echo '
@@ -293,7 +297,8 @@ function asBytes($ini_v) {
 $MAX_UPLOAD_SIZE = min(asBytes(ini_get('post_max_size')), asBytes(ini_get('upload_max_filesize')));
 
 if($_GET['logout']==1){
-	$_SESSION['_sfm_allowed'] = false;
+	//$_SESSION['_sfm_allowed'] = false;
+	$_SESSION[$SESSION_ID] = false;
 	header("Location: $THIS_FILENAME");
 }
 
