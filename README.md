@@ -14,7 +14,6 @@
 
 - New security setting - $THIS_FILENAME
 - New security setting - $PASSWORD_STRONG
-- New security setting - $PASSWORD_STRONG
 - New session ID
 - Bootstrap v4, Bootswatch themes ($bootswatch_theme), responsive
 - New login form, default password = ch@ng3me123$
