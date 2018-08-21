@@ -352,7 +352,7 @@ span.indicator { float: right; }
 .name.is_exe:before { content: "\f085"; }
 
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="<?php echo $bs_js ?>"></script>
 
 <?php if($lightgallery): ?>
@@ -417,7 +417,6 @@ $(function(){
 		$.post("",{'do':'delete',file:$(this).attr('data-file'),xsrf:XSRF},function(response){
 			list();
 		},'json');
-		location.reload();// Added due to new jQuery version
 	<?php if($delete_confirm): ?>
 	}
 	<?php endif; ?>
@@ -433,7 +432,6 @@ $(function(){
 			list();
 		},'json');
 		$dir.val('');
-		location.reload();// Added due to new jQuery version
 		return false;
 	});
 <?php if($allow_upload): ?>
