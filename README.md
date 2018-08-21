@@ -8,11 +8,14 @@
 
 - New security setting - $THIS_FILENAME
 - New security setting - $PASSWORD_STRONG
+- New security setting - $PASSWORD_STRONG
+- New session ID
 - Bootstrap v4, Bootswatch themes ($bootswatch_theme), responsive
 - New login form, default password = ch@ng3me123$
 - Images replaced with FontAwesome icons
 - Icons for specific file types
-- Lightboxes for image file types, other files load in new tab
+- Modals for image, video and audio file types, all other files types load in new tab
+- Optional advanced lightbox for image files ($lightgallery)
 - Delete file confirm dialog setting ($delete_confirm)
 - Full width layout setting ($full_width)
 - Home, refresh and logout buttons
