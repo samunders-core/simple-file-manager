@@ -564,7 +564,7 @@ $(function(){
 			.attr('data-toggle','modal')
 			.attr('data-target','#modal');
 		}
-		} else if ($extn == "mp4" || $extn == "avi" || $extn == "wmv" || $extn == "mov") {
+		} else if ($extn == "mp4" || $extn == "avi" || $extn == "wmv" || $extn == "mov" || $extn == "webm") {
 			$($link).removeAttr('target')
 			.addClass('is_video')
 			.attr('href','javascript:;')
