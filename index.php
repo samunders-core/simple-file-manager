@@ -34,7 +34,7 @@ $hidden_extensions = ['php','htaccess','well-known']; // must be an array of low
 // Other options
 //--------------------------------
 
-$bootswatch_theme = 'cerulean'; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
+$bootswatch_theme = ''; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
 
 // Available themes...
 //--------------------------------
@@ -75,6 +75,7 @@ if ($PASSWORD && $PASSWORD_STRONG) {
 		<link href="'.$bs_css.'" rel="stylesheet">
 		<link href="'.$fa_css.'" rel="stylesheet">
 		<style>.centered { width: 300px; height: auto; padding: 1rem; transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%; overflow: hidden; }</style>
+		<link rel="icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDgvMjEvMTj4jiRxAAABSklEQVRYhe1XO4qEQBQs1z6GYKLigAcQBGMnMDTwGGIsJubOIUyMJzT2DC3DBHMED6C8jRZ2bRc/qzs7iwWdvO5+r6iu/klEhGfi7anVAbBhIMsyKooCfd8vT8YYFEVBVVXS3DmCAnVdryoOAF3X4fF44HQ6zV5XaeiB8/lMAJDnOUzTnJWkaRpEUYSu6+C6LsqyRN/34JxPKrGpBxhjCIIAaZpCluVZSuxiwiUkdtsFc0nsug0/k7Asa5TE7udAEARIkgREhDAMBRLCOfAT3O93+L7/bX/btkJsEwVUVYXjOJBleflkIvrSPM8jz/OIc05bgXNOH3mH9f7eXTCG2+2GOI7RNM2spLqu43K5wDCMybGvoYBhGLher7sQeA0FDg8cHjg88K89cBAY9cDUy2YtNE0TYoICq182E2CMwbZtIS78jH4bT/fAOwFl54NgA2WoAAAAAElFTkSuQmCC">
 		</head>
 		<body>
 		<div class="centered text-center border rounded shadow-sm bg-light">
@@ -122,6 +123,7 @@ if($PASSWORD) {
 		<link href="'.$bs_css.'" rel="stylesheet">
 		<link href="'.$fa_css.'" rel="stylesheet">
 		<style>.centered { width: 300px; height: auto; padding: 1rem; transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%; overflow: hidden; }</style>
+		<link rel="icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDgvMjEvMTj4jiRxAAABSklEQVRYhe1XO4qEQBQs1z6GYKLigAcQBGMnMDTwGGIsJubOIUyMJzT2DC3DBHMED6C8jRZ2bRc/qzs7iwWdvO5+r6iu/klEhGfi7anVAbBhIMsyKooCfd8vT8YYFEVBVVXS3DmCAnVdryoOAF3X4fF44HQ6zV5XaeiB8/lMAJDnOUzTnJWkaRpEUYSu6+C6LsqyRN/34JxPKrGpBxhjCIIAaZpCluVZSuxiwiUkdtsFc0nsug0/k7Asa5TE7udAEARIkgREhDAMBRLCOfAT3O93+L7/bX/btkJsEwVUVYXjOJBleflkIvrSPM8jz/OIc05bgXNOH3mH9f7eXTCG2+2GOI7RNM2spLqu43K5wDCMybGvoYBhGLher7sQeA0FDg8cHjg88K89cBAY9cDUy2YtNE0TYoICq182E2CMwbZtIS78jH4bT/fAOwFl54NgA2WoAAAAAElFTkSuQmCC">
 		</head>
 		<body>
 		<div class="centered text-center border rounded shadow-sm bg-light">
@@ -304,6 +306,8 @@ if($_GET['logout']==1){
 <?php if($lightgallery): ?>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.11/css/lightgallery.min.css"  rel="stylesheet">
 <?php endif; ?>
+
+<link rel="icon" type="image/x-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAAWdEVYdENyZWF0aW9uIFRpbWUAMDgvMjEvMTj4jiRxAAABSklEQVRYhe1XO4qEQBQs1z6GYKLigAcQBGMnMDTwGGIsJubOIUyMJzT2DC3DBHMED6C8jRZ2bRc/qzs7iwWdvO5+r6iu/klEhGfi7anVAbBhIMsyKooCfd8vT8YYFEVBVVXS3DmCAnVdryoOAF3X4fF44HQ6zV5XaeiB8/lMAJDnOUzTnJWkaRpEUYSu6+C6LsqyRN/34JxPKrGpBxhjCIIAaZpCluVZSuxiwiUkdtsFc0nsug0/k7Asa5TE7udAEARIkgREhDAMBRLCOfAT3O93+L7/bX/btkJsEwVUVYXjOJBleflkIvrSPM8jz/OIc05bgXNOH3mH9f7eXTCG2+2GOI7RNM2spLqu43K5wDCMybGvoYBhGLher7sQeA0FDg8cHjg88K89cBAY9cDUy2YtNE0TYoICq182E2CMwbZtIS78jH4bT/fAOwFl54NgA2WoAAAAAElFTkSuQmCC">
 
 <style>
 
