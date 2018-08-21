@@ -34,7 +34,7 @@ $hidden_extensions = ['php','htaccess','well-known']; // must be an array of low
 // Other options
 //--------------------------------
 
-$bootswatch_theme = ''; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
+$bootswatch_theme = 'cerulean'; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
 
 // Available themes...
 //--------------------------------
