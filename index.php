@@ -329,7 +329,7 @@ table thead a { display: inline-block; }
 .sort_hide { display: none; }
 
 td { font-size: 0.9rem; white-space: nowrap; vertical-align: middle !important; }
-td.first { font-size: 1rem; white-space: normal; vertical-align: middle !important; font-weight: normal; }
+td.first { font-size: 1rem; white-space: normal; vertical-align: middle !important; font-weight: normal; min-width: 300px; }
 td.empty { font-size: 1rem; font-style: italic; text-align: center !important; padding: 2em 0; }
 
 .is_dir .size { color: transparent; font-size: 0; }
