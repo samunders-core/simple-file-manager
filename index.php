@@ -31,7 +31,9 @@ $allow_direct_link = true; // Set to false to only allow downloads and not direc
 $disallowed_extensions = ['php','com','bat','cmd','reg','vbs','vbe','jse','sh','jar','java','msi','ws','wsf','scf','scr','pif','hta','cpl','gadget','application','lnk'];  // must be an array. Extensions disallowed to be uploaded
 $hidden_extensions = ['php','htaccess','well-known']; // must be an array of lowercase file extensions. Extensions hidden in directory index
 
-$full_width = false; // Set to true for full width container
+// Other options
+//--------------------------------
+
 $bootswatch_theme = 'cerulean'; // Leave blank to use default Bootstrap theme - See: https://www.bootstrapcdn.com/bootswatch/
 
 // Available themes...
@@ -40,10 +42,13 @@ $bootswatch_theme = 'cerulean'; // Leave blank to use default Bootstrap theme - 
 cerulean | cosmo | cyborg | darkly | flatly | journal | litera | lumen | lux | materia | minty | pulse | sandstone | simplex | sketchy | slate | solar | spacelab | superhero | united | yeti
 */
 
+$full_width = false; // Set to true for full width container
+
 $lightgallery = false; // Set to true if you want advanced lightbox with zooming
 
 $show_credit = true;
 
+// CSS & JS sources
 //--------------------------------
 
 if ($bootswatch_theme) {
@@ -51,12 +56,10 @@ if ($bootswatch_theme) {
 } else {
 	$bs_css = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"; // https://www.bootstrapcdn.com/
 }
-
 $bs_js = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"; // https://www.bootstrapcdn.com/
-
 $fa_css = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"; // https://fontawesome.com/v4.7.0/icons/
 
-//--------------------------------
+//------------- End of Settings -------------------
 
 if ($PASSWORD && $PASSWORD_STRONG) {
 	$hasLetter  = preg_match('/[a-zA-Z]/',    $PASSWORD);
@@ -553,6 +556,7 @@ $(function(){
 			$($link).removeAttr('target')
 			.addClass('is_image')
 			.attr('href','javascript:;')
+			.attr('data-type','image')
 			.attr('data-name',data.name)
 			.attr('data-path',data.path)
 			.attr('data-toggle','modal')
@@ -562,6 +566,7 @@ $(function(){
 			$($link).removeAttr('target')
 			.addClass('is_video')
 			.attr('href','javascript:;')
+			.attr('data-type','video')
 			.attr('data-name',data.name)
 			.attr('data-path',data.path)
 			.attr('data-toggle','modal')
@@ -570,6 +575,7 @@ $(function(){
 			$($link).removeAttr('target')
 			.addClass('is_audio')
 			.attr('href','javascript:;')
+			.attr('data-type','audio')
 			.attr('data-name',data.name)
 			.attr('data-path',data.path)
 			.attr('data-toggle','modal')
@@ -644,30 +650,19 @@ $(function(){
 		location.reload();
 	});
 
-	$('#table').on('click','.is_image',function(data) {
+	$('#table').on('click','.is_image, .is_video, .is_audio',function(data) {
+	var $type = $(this).attr('data-type');
 	var $name = $(this).attr('data-name');
 	var $path = $(this).attr('data-path');
 	setTimeout(function() {
 		$('#modal').find('.modal-title').text($name);
-		$('#modal').find('.modal-body').html('').html('<div class="text-center"><img class="img-fluid" src="'+$path+'"></div>');
-	}, 300);
-	});
-
-	$('#table').on('click','.is_video',function(data) {
-	var $name = $(this).attr('data-name');
-	var $path = $(this).attr('data-path');
-	setTimeout(function() {
-		$('#modal').find('.modal-title').text($name);
-		$('#modal').find('.modal-body').html('').html('<div class="embed-responsive-item"><video class="w-100" preload="none" controls="controls" autoplay="autoplay"><source src="'+$path+'"></video></div>');
-	}, 300);
-	});
-
-	$('#table').on('click','.is_audio',function(data) {
-	var $name = $(this).attr('data-name');
-	var $path = $(this).attr('data-path');
-	setTimeout(function() {
-		$('#modal').find('.modal-title').text($name);
-		$('#modal').find('.modal-body').html('').html('<audio class="w-100" preload="none" controls="controls" autoplay="autoplay"><source src="'+$path+'"></audio>');
+		if ($type == "image") {
+			$('#modal').find('.modal-body').html('').html('<div class="text-center"><img class="img-fluid" src="'+$path+'"></div>');
+		} else if ($type == "video") {
+			$('#modal').find('.modal-body').html('').html('<div class="embed-responsive-item"><video class="w-100" preload="none" controls="controls" autoplay="autoplay"><source src="'+$path+'"></video></div>');
+		} else if ($type == "audio") {
+			$('#modal').find('.modal-body').html('').html('<audio class="w-100" preload="none" controls="controls" autoplay="autoplay"><source src="'+$path+'"></audio>');
+		}
 	}, 300);
 	});
 
@@ -675,8 +670,8 @@ $(function(){
 		$(this).find('.modal-body').html('');
 	});
 
-	console.log('^ Ignore the Boostrap warning, modals work fine using jQuery v1.8.2 !');
-	
+	console.log('^ Ignore the Boostrap warning, everything works fine using jQuery v1.8.2 !');
+
 });
 </script>
 </head>
