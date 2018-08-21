@@ -50,9 +50,9 @@ $show_credit = true;
 //--------------------------------
 
 if ($bootswatch_theme) {
-	$bs_css = "https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/$bootswatch_theme/bootstrap.min.css"; // https://www.bootstrapcdn.com/bootswatch/
+$bs_css = "https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/$bootswatch_theme/bootstrap.min.css"; // https://www.bootstrapcdn.com/bootswatch/
 } else {
-	$bs_css = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"; // https://www.bootstrapcdn.com/
+$bs_css = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"; // https://www.bootstrapcdn.com/
 }
 $bs_js = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"; // https://www.bootstrapcdn.com/
 $fa_css = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"; // https://fontawesome.com/v4.7.0/icons/
