@@ -37,28 +37,10 @@ $bootswatch_theme = 'cerulean'; // Leave blank to use default Bootstrap theme - 
 // Available themes...
 //--------------------------------
 /*
-cerulean
-cosmo
-cyborg
-darkly
-flatly
-journal
-litera
-lumen
-lux
-materia
-minty
-pulse
-sandstone
-simplex
-sketchy
-slate
-solar
-spacelab
-superhero
-united
-yeti
+cerulean | cosmo | cyborg | darkly | flatly | journal | litera | lumen | lux | materia | minty | pulse | sandstone | simplex | sketchy | slate | solar | spacelab | superhero | united | yeti
 */
+
+$lightgallery = false; // Set to true if you want advanced lightbox with zooming
 
 $show_credit = true;
 
@@ -69,6 +51,8 @@ if ($bootswatch_theme) {
 } else {
 	$bs_css = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"; // https://www.bootstrapcdn.com/
 }
+
+$bs_js = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"; // https://www.bootstrapcdn.com/
 
 $fa_css = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"; // https://fontawesome.com/v4.7.0/icons/
 
@@ -315,7 +299,11 @@ if($_GET['logout']==1){
 <title>File Manager</title>
 <link href="<?php echo $bs_css ?>" rel="stylesheet">
 <link href="<?php echo $fa_css ?>" rel="stylesheet">
+
+<?php if($lightgallery): ?>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.11/css/lightgallery.min.css"  rel="stylesheet">
+<?php endif; ?>
+
 <style>
 
 body { margin: 1em; }
@@ -364,8 +352,13 @@ span.indicator { float: right; }
 .name.is_exe:before { content: "\f085"; }
 
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="<?php echo $bs_js ?>"></script>
+
+<?php if($lightgallery): ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.11/js/lightgallery-all.min.js"></script>
+<?php endif; ?>
+
 <script>
 (function($){
 	$.fn.tablesorter = function() {
@@ -424,6 +417,7 @@ $(function(){
 		$.post("",{'do':'delete',file:$(this).attr('data-file'),xsrf:XSRF},function(response){
 			list();
 		},'json');
+		location.reload();// Added due to new jQuery version
 	<?php if($delete_confirm): ?>
 	}
 	<?php endif; ?>
@@ -439,6 +433,7 @@ $(function(){
 			list();
 		},'json');
 		$dir.val('');
+		location.reload();// Added due to new jQuery version
 		return false;
 	});
 <?php if($allow_upload): ?>
@@ -542,7 +537,10 @@ $(function(){
 
 		var $extn = getFileExtension(data.path);
 
+		var lightgallery = <?php echo $lightgallery?'true':'false'; ?>;
+
 		if ($extn == "jpg" || $extn == "jpeg" || $extn == "pjpeg" || $extn == "gif" || $extn == "png" || $extn == "svg") {
+		if (lightgallery) {
 			$($link).removeAttr('target')
 			.addClass('is_image')
 			.attr('href',data.path)
@@ -553,10 +551,31 @@ $(function(){
 				hash: false,
 				download: false
 			});
+		} else {
+			$($link).removeAttr('target')
+			.addClass('is_image')
+			.attr('href','javascript:;')
+			.attr('data-name',data.name)
+			.attr('data-path',data.path)
+			.attr('data-toggle','modal')
+			.attr('data-target','#modal');
+		}
 		} else if ($extn == "mp4" || $extn == "avi" || $extn == "wmv" || $extn == "mov") {
-			$($link).addClass('is_video');
+			$($link).removeAttr('target')
+			.addClass('is_video')
+			.attr('href','javascript:;')
+			.attr('data-name',data.name)
+			.attr('data-path',data.path)
+			.attr('data-toggle','modal')
+			.attr('data-target','#modal');
 		} else if ($extn == "mp3" || $extn == "ogg" || $extn == "wav" || $extn == "wma") {
-			$($link).addClass('is_audio');
+			$($link).removeAttr('target')
+			.addClass('is_audio')
+			.attr('href','javascript:;')
+			.attr('data-name',data.name)
+			.attr('data-path',data.path)
+			.attr('data-toggle','modal')
+			.attr('data-target','#modal');
 		} else if ($extn == "txt") {
 			$($link).addClass('is_text');
 		} else if ($extn == "doc" || $extn == "docx") {
@@ -627,6 +646,37 @@ $(function(){
 		location.reload();
 	});
 
+	$('#table').on('click','.is_image',function(data) {
+	var $name = $(this).attr('data-name');
+	var $path = $(this).attr('data-path');
+	setTimeout(function() {
+		$('#modal').find('.modal-title').text($name);
+		$('#modal').find('.modal-body').html('').html('<div class="text-center"><img class="img-fluid" src="'+$path+'"></div>');
+	}, 300);
+	});
+
+	$('#table').on('click','.is_video',function(data) {
+	var $name = $(this).attr('data-name');
+	var $path = $(this).attr('data-path');
+	setTimeout(function() {
+		$('#modal').find('.modal-title').text($name);
+		$('#modal').find('.modal-body').html('').html('<div class="embed-responsive-item"><video class="w-100" preload="none" controls="controls" autoplay="autoplay"><source src="'+$path+'"></video></div>');
+	}, 300);
+	});
+
+	$('#table').on('click','.is_audio',function(data) {
+	var $name = $(this).attr('data-name');
+	var $path = $(this).attr('data-path');
+	setTimeout(function() {
+		$('#modal').find('.modal-title').text($name);
+		$('#modal').find('.modal-body').html('').html('<audio class="w-100" preload="none" controls="controls" autoplay="autoplay"><source src="'+$path+'"></audio>');
+	}, 300);
+	});
+
+	$('#modal').on('hide.bs.modal', function(){
+		$(this).find('.modal-body').html('');
+	});
+
 });
 </script>
 </head>
@@ -692,6 +742,23 @@ $(function(){
 </thead>
 <tbody id="list"></tbody>
 </table>
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title"></h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body"></div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
 </div>
 
 <?php if($show_credit): ?>
