@@ -4,6 +4,12 @@
 
 ![Screenshot](https://raw.github.com/xcartmods/simple-file-manager/master/screenshot2.jpg "Screenshot")
 
+![Screenshot](https://raw.github.com/xcartmods/simple-file-manager/master/screenshot3.jpg "Screenshot")
+
+![Screenshot](https://raw.github.com/xcartmods/simple-file-manager/master/screenshot4.jpg "Screenshot")
+
+![Screenshot](https://raw.github.com/xcartmods/simple-file-manager/master/screenshot5.jpg "Screenshot")
+
 # ADDITIONS...
 
 - New security setting - $THIS_FILENAME
