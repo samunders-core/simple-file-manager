@@ -60,7 +60,7 @@ united
 yeti
 */
 
-$show_credit = false;
+$show_credit = true;
 
 //--------------------------------
 
