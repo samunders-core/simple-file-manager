@@ -234,7 +234,10 @@ if($_GET['do'] == 'list') {
 } elseif ($_GET['do'] == 'download') {
 	$filename = basename($file);
 	if ($filename != $THIS_FILENAME) {
-	header('Content-Type: ' . mime_content_type($file));
+	//https://github.com/jcampbell1/simple-file-manager/commit/76c63de810cda4d5c296926825f4d56434dcb60a
+	//header('Content-Type: ' . mime_content_type($file));
+	$finfo = finfo_open(FILEINFO_MIME_TYPE);//+
+	header('Content-Type: ' . finfo_file($finfo, $file));//+
 	header('Content-Length: '. filesize($file));
 	header(sprintf('Content-Disposition: attachment; filename=%s',
 		strpos('MSIE',$_SERVER['HTTP_REFERER']) ? rawurlencode($filename) : "\"$filename\"" ));
