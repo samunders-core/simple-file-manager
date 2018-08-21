@@ -43,9 +43,7 @@ cerulean | cosmo | cyborg | darkly | flatly | journal | litera | lumen | lux | m
 */
 
 $full_width = false; // Set to true for full width container
-
 $lightgallery = false; // Set to true if you want advanced lightbox with zooming
-
 $show_credit = true;
 
 // CSS & JS sources
