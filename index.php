@@ -675,6 +675,8 @@ $(function(){
 		$(this).find('.modal-body').html('');
 	});
 
+	console.log('^ Ignore the Boostrap warning, modals work fine using jQuery v1.8.2 !');
+	
 });
 </script>
 </head>
