@@ -209,14 +209,15 @@ if($_GET['do'] == 'list') {
 	@mkdir($_POST['name']);
 	exit;
 } elseif ($_POST['do'] == 'upload' && $allow_upload) {
-	var_dump($_POST);
-	var_dump($_FILES);
-	var_dump($_FILES['file_data']['tmp_name']);
+	//var_dump($_POST);
+	//var_dump($_FILES);
+	//var_dump($_FILES['file_data']['tmp_name']);
 	foreach($disallowed_extensions as $ext)
 		if(preg_match(sprintf('/\.%s$/',preg_quote($ext)), $_FILES['file_data']['name']))
 			err(403,"Files of this type are not allowed.");
 
-	var_dump(move_uploaded_file($_FILES['file_data']['tmp_name'], $file.'/'.$_FILES['file_data']['name']));
+	//var_dump(move_uploaded_file($_FILES['file_data']['tmp_name'], $file.'/'.$_FILES['file_data']['name']));
+	$res = move_uploaded_file($_FILES['file_data']['tmp_name'], $file.'/'.$_FILES['file_data']['name']);
 	exit;
 } elseif ($_GET['do'] == 'download') {
 	$filename = basename($file);
