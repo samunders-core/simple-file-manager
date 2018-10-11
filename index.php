@@ -44,6 +44,7 @@ cerulean | cosmo | cyborg | darkly | flatly | journal | litera | lumen | lux | m
 
 $full_width = false; // Set to true for full width container
 $lightgallery = false; // Set to true if you want advanced lightbox with zooming
+$app_title = "File Manager";
 $show_credit = true;
 
 // CSS & JS sources
@@ -71,7 +72,7 @@ if ($PASSWORD && $PASSWORD_STRONG) {
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="robots" content="noindex, nofollow">
-		<title>File Manager</title>
+		<title>'.$app_title.'</title>
 		<link href="'.$bs_css.'" rel="stylesheet">
 		<link href="'.$fa_css.'" rel="stylesheet">
 		<style>.centered { width: 300px; height: auto; padding: 1rem; transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%; overflow: hidden; }</style>
@@ -119,7 +120,7 @@ if($PASSWORD) {
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="robots" content="noindex, nofollow">
-		<title>File Manager</title>
+		<title>'.$app_title.'</title>
 		<link href="'.$bs_css.'" rel="stylesheet">
 		<link href="'.$fa_css.'" rel="stylesheet">
 		<style>.centered { width: 300px; height: auto; padding: 1rem; transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%; overflow: hidden; }</style>
@@ -128,7 +129,7 @@ if($PASSWORD) {
 		<body>
 		<div class="centered text-center border rounded shadow-sm bg-light">
 		<i class="fa fa-file-text-o fa-3x mb-3"></i>
-		<h3 class="mb-3"><b>File Manager</b></h3>
+		<h3 class="mb-3"><b>'.$app_title.'</b></h3>
 		<form action=? method="post" autocomplete="off" class="m-0">
 		<div class="input-group">
 		<input type="password" name="p" value="" class="form-control" placeholder="Password" autocomplete="off" required>
@@ -300,7 +301,7 @@ if($_GET['logout']==1){
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>File Manager</title>
+<title><?php echo $app_title ?></title>
 <link href="<?php echo $bs_css ?>" rel="stylesheet">
 <link href="<?php echo $fa_css ?>" rel="stylesheet">
 
@@ -687,7 +688,7 @@ $(function(){
 <div class="row align-items-center">
 
 <div class="col-md-12 col-lg-3 mb-4 text-center text-lg-left order-1 order-lg-1">
-<h3 class="mb-0"><i class="fa fa-file-text-o mr-1"></i> <a href="<?php echo $THIS_FILENAME; ?>"><b>File Manager</b></a></h3>
+<h3 class="mb-0"><i class="fa fa-file-text-o mr-1"></i> <a href="<?php echo $THIS_FILENAME; ?>"><b><?php echo $app_title; ?></b></a></h3>
 </div>
 
 <div class="col-md-12 col-lg-3 mb-4 order-3 order-lg-2">
