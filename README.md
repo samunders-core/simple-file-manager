@@ -1,4 +1,6 @@
-## Screenshot
+# Simple File Manager + Bootstrap 4
+
+## Screenshots
 
 ![Screenshot](https://raw.github.com/xcartmods/simple-file-manager/master/screenshot.jpg "Screenshot")
 
@@ -10,7 +12,7 @@
 
 ![Screenshot](https://raw.github.com/xcartmods/simple-file-manager/master/screenshot_5.jpg "Screenshot")
 
-# ADDITIONS...
+## ADDITIONS...
 
 - New security setting - $THIS_FILENAME
 - New security setting - $PASSWORD_STRONG
