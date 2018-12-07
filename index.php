@@ -29,7 +29,7 @@ $allow_create_folder = true; // Set to false to disable folder creation
 $allow_direct_link = true; // Set to false to only allow downloads and not direct link
 
 $disallowed_extensions = ['php','com','bat','cmd','reg','vbs','vbe','jse','sh','jar','java','msi','ws','wsf','scf','scr','pif','hta','cpl','gadget','application','lnk'];  // must be an array. Extensions disallowed to be uploaded
-$hidden_extensions = ['php','htaccess','well-known']; // must be an array of lowercase file extensions. Extensions hidden in directory index
+$hidden_extensions = ['php','htaccess','well-known','swp']; // must be an array of lowercase file extensions. Extensions hidden in directory index
 
 // Other options
 //--------------------------------
