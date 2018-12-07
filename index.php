@@ -103,13 +103,13 @@ if ($PASSWORD && $PASSWORD_STRONG) {
 
 $SESSION_ID = $_SERVER['PHP_SELF'];
 
-if($PASSWORD) {
+if($PASSWORD || isset($_SERVER['PHP_AUTH_USER'])) {
 	session_start();
 	//if(!$_SESSION['_sfm_allowed']) {
 	if(!$_SESSION[$SESSION_ID]) {
 		// sha1, and random bytes to thwart timing attacks.  Not meant as secure hashing.
 		$t = bin2hex(openssl_random_pseudo_bytes(10));
-		if($_POST['p'] && sha1($t.$_POST['p']) === sha1($t.$PASSWORD)) {
+		if(isset($_SERVER['PHP_AUTH_PW']) || ($_POST['p'] && sha1($t.$_POST['p']) === sha1($t.$PASSWORD))) {
 			//$_SESSION['_sfm_allowed'] = true;
 			$_SESSION[$SESSION_ID] = true;
 			header('Location: ?');
