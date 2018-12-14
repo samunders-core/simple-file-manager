@@ -217,9 +217,15 @@ if($_GET['do'] == 'list') {
 		if(preg_match(sprintf('/\.%s$/',preg_quote($ext)), $_FILES['file_data']['name']))
 			err(403,"Files of this type are not allowed.");
 
-	//var_dump(move_uploaded_file($_FILES['file_data']['tmp_name'], $file.'/'.$_FILES['file_data']['name']));
-	$res = move_uploaded_file($_FILES['file_data']['tmp_name'], $file.'/'.$_FILES['file_data']['name']);
-	exit;
+        $file_data = decode_chunk($_POST['file_data']);
+        if (false !== $file_data) {
+                $res = file_put_contents($file, $file_data, FILE_APPEND);
+                echo "Appended ". $res ." bytes to ". $file;
+        } else {
+                //var_dump(move_uploaded_file($_FILES['file_data']['tmp_name'], $file.'/'.$_FILES['file_data']['name']));
+                $res = move_uploaded_file($_FILES['file_data']['tmp_name'], $file.'/'.$_FILES['file_data']['name']);
+        }
+        exit;
 } elseif ($_GET['do'] == 'download') {
 	$filename = basename($file);
 	if ($filename != $THIS_FILENAME) {
@@ -234,6 +240,17 @@ if($_GET['do'] == 'list') {
 	readfile($file);
 	exit;
 	}
+}
+function decode_chunk($data) {
+        $data = explode(';base64,', $data);
+        if (!is_array($data) || ! isset($data[1])) {
+                return false;
+        }
+        $data = base64_decode($data[1]);
+        if (!$data) {
+                return false;
+        }
+        return $data;
 }
 function rmrf($dir) {
 	if(is_dir($dir)) {
@@ -468,10 +485,14 @@ $(function(){
 		var folder = decodeURIComponent(window.location.hash.substr(1));
 
 		if(file.size > MAX_UPLOAD_SIZE) {
-			var $error_row = renderFileSizeErrorRow(file,folder);
-			$('#upload_progress').append($error_row);
-			window.setTimeout(function(){$error_row.fadeOut();},5000);
-			return false;
+                        var $row = renderFileUploadRow(file,folder);
+                        $('#upload_progress').append($row);
+                        uploadSlice(folder, file, $row, new FileReader(), 0);
+                        return true;
+                        //var $error_row = renderFileSizeErrorRow(file,folder);
+                        //$('#upload_progress').append($error_row);
+                        //window.setTimeout(function(){$error_row.fadeOut();},5000);
+                        //return false;
 		}
 
 		var $row = renderFileUploadRow(file,folder);
@@ -494,6 +515,44 @@ $(function(){
 		};
 	    xhr.send(fd);
 	}
+        function uploadSlice(folder,file,row,reader,start) {    // https://github.com/deliciousbrains/wp-dbi-file-uploader/blob/master/dbi-file-uploader.js
+                var slice_size = MAX_UPLOAD_SIZE;       // 1000 * 1024;
+                var next_slice = start + slice_size + 1;
+                reader.onloadend = function(event) {
+                        if (event.target.readyState !== FileReader.DONE) {
+                                return;
+                        }
+                        $.ajax({
+                                type: 'POST',
+                                dataType: 'text',
+                                cache: false,
+                                data: {
+                                        action: '?',
+                                        'do': 'upload',
+                                        xsrf: XSRF,
+                                        file_data: event.target.result,
+                                        file: folder + '/' + file.name,
+                                        file_type: file.type
+                                },
+                                error: function(jqXHR, textStatus, errorThrown) {
+                                        console.log(jqXHR, textStatus, errorThrown);
+                                        renderFileSizeErrorRow(file, textStatus);
+                                },
+                                success: function(data) {
+                                        if (next_slice < file.size) {   // Update upload progress
+                                                var size_done = start + slice_size;
+                                                row.find('.progress-bar').css('width',(Math.floor((size_done / file.size) * 100) | 0)+'%' );
+                                                uploadSlice(folder, file, row, reader, next_slice);     // More to upload, call function recursively
+                                        } else {
+                                                row.remove();
+                                                list();
+                                        }
+                                }
+                        });
+                };
+                var blob = file.slice(start, next_slice);
+                reader.readAsDataURL(blob);
+        }
 	function renderFileUploadRow(file,folder) {
 		return $row = $('<div/>')
 			.append( $('<span class="fileuploadname" />').text( (folder ? folder+'/':'')+file.name))
@@ -708,7 +767,7 @@ $(function(){
 <div id="file_drop_target">
 <div class="custom-file shadow-sm">
 <input type="file" class="custom-file-input" id="customFile" multiple>
-<label class="custom-file-label" for="customFile">Drop max <?php echo $MAX_UPLOAD_SIZE/1024/1024; ?> MiB File(s) Here, or</label>
+<label class="custom-file-label" for="customFile">Drop max <?php echo intval(disk_free_space($tmp)/1024/1024/1024); ?> GiB File(s) Here, or</label>
 </div>
 </div>
 <?php endif; ?>
