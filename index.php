@@ -704,7 +704,11 @@ $(function(){
 		var d = Math.round(bytes*10);
 		return pos ? [parseInt(d/10),".",d%10," ",s[pos]].join('') : bytes + ' bytes';
 	}
-
+	
+        $(document).ready(function() {
+                $('.custom-file-label').text('Drop max ' + formatFileSize(<?php echo disk_free_space($tmp); ?>) + ' File(s) Here, or');
+        });
+	
 	$('body').click(function(){
 		$('#file_drop_target').removeClass('drag_over');
 	});
@@ -767,7 +771,7 @@ $(function(){
 <div id="file_drop_target">
 <div class="custom-file shadow-sm">
 <input type="file" class="custom-file-input" id="customFile" multiple>
-<label class="custom-file-label" for="customFile">Drop max <?php echo intval(disk_free_space($tmp)/1024/1024/1024); ?> GiB File(s) Here, or</label>
+<label class="custom-file-label" for="customFile">Drop File(s) Here, or</label>
 </div>
 </div>
 <?php endif; ?>
